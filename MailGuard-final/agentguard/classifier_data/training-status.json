@@ -1,0 +1,34 @@
+{
+  "candidate": "agentguard-text-tfidf-v2",
+  "training_examples": 1185,
+  "test": {
+    "examples": 359,
+    "accuracy": 0.8941504178272981,
+    "attack_recall": 0.9116022099447514,
+    "benign_specificity": 0.8764044943820225,
+    "precision": 0.9428571428571428,
+    "false_positives": 10,
+    "missed_attacks": 16,
+    "abstentions": 14,
+    "accuracy_95pct_wilson": [
+      0.8580480829094862,
+      0.921906586014915
+    ]
+  },
+  "email_regression": {
+    "examples": 24,
+    "accuracy": 0.625,
+    "attack_recall": 0.5833333333333334,
+    "benign_specificity": 0.6666666666666666,
+    "precision": 0.6363636363636364,
+    "false_positives": 4,
+    "missed_attacks": 5,
+    "abstentions": 0,
+    "accuracy_95pct_wilson": [
+      0.42709619037907065,
+      0.7884086656636855
+    ]
+  },
+  "target_met": false,
+  "experimental_active": true
+}

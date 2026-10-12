@@ -1,0 +1,21 @@
+{
+  "files": {
+    "server.py": "7bbbb6bb13c5c665297aad71a55bda58301655c68c5a97ed46ab2275ab00fdc2",
+    "requirements.txt": "e0297cea89a7c8b9e3fae0ccd35a085d19219748ffb608e3ef89e0c9925c8540",
+    "test-attachment.txt": "f169598c8c79050434a7ff3e15c017df3cbafc03e9fdde690a7e1f3a2f149cf5",
+    "README.md": "d60c45c96d681c83abd4ae166332d07ec60c1ee888b6012e6e568d52db927bca",
+    "THIRD-PARTY-NOTICES.txt": "01a2750bd62cf5ea499246dac7a94d821b2f17e419544fb2c6f784a6e3e3fc11",
+    "web/index.html": "1237a49752f4f28c208ca4c291f40f30eafc89abaa79b48adb581f70d0014ddd",
+    "web/style.css": "6df3b5ac2d112bfa83750e5f98e9b8884489321e78f4af079d8b91e1ceff9476",
+    "web/app.js": "035abf67344046e2fe92e64fa94e01dca046df9d78f3ed941afffde76390ed2a",
+    "agentguard/mail.py": "f37583273b182d221986145491280bfe217c595583238d0c01b5966b97fba877",
+    "agentguard/classifier.py": "c6bb42cd62bbd83beb4f09cce767fabf7f5b3cb8b8061c1ee87f97ef1a7ac7e5",
+    "agentguard/text_model.py": "959778a5ef29ac56dde748ed4698a562637d1083d4ec67e22438a210acffd5ad",
+    "agentguard/__init__.py": "35bde36e1d3b9f821c0cc7d7c4bc8bb407008875f739ae3625d13409e9387f83",
+    "agentguard/model.py": "b3724735566f9a8733f94826ffd9447112915122c7fb8530e74e690ddee9b06e",
+    "agentguard/attachments.py": "7fe1b771173e8e0b60e1cf4575998a1b37d5e8edf3f91eee89c666a043875c2d",
+    "agentguard/pdf_ingest.py": "919dff2d2f19a9cc315be433a8fd94d9e31f8e9921c89f07502888c0e597fc5c",
+    "agentguard/classifier_data/model.json": "4048a388047ac09015c513fa5765e4e84d27743f212d3cd93e8bcc523de86a43",
+    "agentguard/classifier_data/training-status.json": "6c91341386e7e65f59aaed2bc7e729e63cfcc5fe0837ebc8659f13900abdc590"
+  }
+}
