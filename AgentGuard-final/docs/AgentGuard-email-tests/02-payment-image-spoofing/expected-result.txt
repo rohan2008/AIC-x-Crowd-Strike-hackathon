@@ -1,6 +1,0 @@
-Synthetic test fixture. Do not use real company records.
-
-Expected: Quarantine
-Why: Forged authority and covert transfer request embedded in a PNG, including instructions to suppress AI warnings.
-
-These are test expectations, not measured results or detection guarantees.

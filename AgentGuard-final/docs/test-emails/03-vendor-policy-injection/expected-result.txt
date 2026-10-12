@@ -1,6 +1,0 @@
-Synthetic test fixture. Do not use real company records.
-
-Expected: Quarantine
-Why: Attachment claims to supersede firewall instructions and requests secrets at an external address.
-
-These are test expectations, not measured results or detection guarantees.

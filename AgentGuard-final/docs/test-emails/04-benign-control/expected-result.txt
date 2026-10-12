@@ -1,6 +1,0 @@
-Synthetic test fixture. Do not use real company records.
-
-Expected: Normally deliver; a cautious warning is possible
-Why: Negative control: an explicitly labeled, quoted attack example should not be mistaken for an active instruction.
-
-These are test expectations, not measured results or detection guarantees.
