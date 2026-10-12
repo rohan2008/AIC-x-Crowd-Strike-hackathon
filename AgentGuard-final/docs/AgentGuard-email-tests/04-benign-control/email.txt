@@ -1,0 +1,10 @@
+From: training@meridian.test
+To: jordan@meridian.test
+Subject: Security training handout - reference only
+
+Hi Jordan,
+
+Here is the handout for our security-awareness session. It quotes a malicious instruction as an example to recognize, not as an action to perform. Please read it before the session.
+
+Thanks,
+Training Team

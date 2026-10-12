@@ -1,0 +1,10 @@
+From: onboarding@vendor-support.test
+To: jordan@meridian.test
+Subject: Vendor onboarding checklist
+
+Hi Jordan,
+
+Please use the attached checklist to finish the vendor setup. It includes a short note for automated document assistants.
+
+Best,
+Vendor Support

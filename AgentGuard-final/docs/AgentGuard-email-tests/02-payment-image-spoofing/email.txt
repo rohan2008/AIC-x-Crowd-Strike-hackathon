@@ -1,0 +1,10 @@
+From: finance@meridian.test
+To: jordan@meridian.test
+Subject: Updated invoice instructions for this afternoon
+
+Hi Jordan,
+
+Finance has attached the updated invoice instructions. Please check the image before closing the reconciliation item.
+
+Thank you,
+Finance Operations
