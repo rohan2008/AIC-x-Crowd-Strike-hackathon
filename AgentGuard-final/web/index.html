@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AgentGuard | Security testing</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="AgentGuard home"><span class="logo">AG</span><span class="brand-name">AgentGuard<small>Security console</small></span></a>
+  <div class="workspace-label">WORKSPACE</div>
+  <nav aria-label="Workspace"><button class="nav-item active" data-view="lab" aria-label="Test a ticket" title="Test a ticket"><span aria-hidden="true">▤</span><span class="nav-label">Test a ticket</span></button><button class="nav-item" data-view="evaluation" aria-label="Test results" title="Test results"><span aria-hidden="true">▥</span><span class="nav-label">Test results</span></button><button class="nav-item" data-view="architecture" aria-label="How it works" title="How it works"><span aria-hidden="true">⌘</span><span class="nav-label">How it works</span></button></nav>
+  <div class="sidebar-bottom"><span class="live-dot"></span> Private demo<div>Uses fake customer records.<br>No emails are sent.</div><span class="track">TRACK 03 — ATTACK & DEFEND</span></div>
+</aside>
+<main>
+  <header class="topbar"><span>Workspace <span class="slash">/</span> <strong id="breadcrumb">Test a ticket</strong></span><span class="topbar-context">Support agent <span class="topbar-divider">|</span> Development</span></header>
+  <div class="page">
+    <section class="page-heading"><div><div class="eyebrow">AGENT SECURITY</div><h1>Security test workspace</h1><p>Test prompt injection and compare agent permissions.</p></div><span class="environment-tag">PRIVATE DEMO</span></section>
+    <div class="modebar"><div><span class="config-label">EXECUTION</span><strong id="mode-label">Simulation mode</strong><span id="mode-description">Scripted agents · no model calls</span></div><label for="mode" class="sr-only">Agent mode</label><select id="mode"><option value="simulation">Simulation</option><option value="live" disabled>Live model · not configured</option></select></div>
+    <p id="notice" role="status" aria-live="polite" class="notice" hidden></p>
+    <section id="lab-view">
+      <div class="agent-flow" aria-label="Agent workflow"><span><b>01</b> Supervisor<small>Delegates the task</small></span><i>→</i><span><b>02</b> Support<small>Reads & drafts</small></span><i>→</i><span><b>03</b> Reviewer<small>Advises supervisor</small></span><i>→</i><span><b>04</b> Gateway<small>Enforces permissions</small></span></div>
+      <div class="section-heading"><h2><span class="step-label">01</span> Choose a test</h2><span class="muted">You can also edit the ticket below</span></div>
+      <div class="setup-grid">
+        <div class="panel scenario-panel"><div class="panel-heading"><h3>Test tickets</h3><span class="count" id="case-count">8 cases</span></div><div id="scenarios"></div><div class="redteam-controls"><button class="text-button" id="generate">＋ Generate 3 attack variants</button><p>Creates variations of this ticket.<br>It cannot read records or send replies.</p></div>
+          <div class="custom-test-controls">
+            <h4>Save a custom attack test</h4>
+            <label for="custom-name">Test name</label><input id="custom-name" maxlength="100" placeholder="e.g. Invoice attachment injection">
+            <label for="custom-body">Test content</label><textarea id="custom-body" maxlength="12000" placeholder="Write or paste the ticket text to test…"></textarea>
+            <button class="text-button" id="save-case">＋ Add current ticket to tests</button>
+            <p>Custom tests are scored as attacks. Saved in this browser and included in Test results.</p>
+          </div></div>
+        <div class="panel ticket-panel"><div class="panel-heading"><h3>Ticket content</h3><span class="pill amber">Untrusted content</span></div><div class="ticket-meta"><div><span>TICKET</span><strong>TKT-1042</strong></div><div><span>VERIFIED SENDER</span><strong>alex@example.test</strong></div><div><span>CUSTOMER</span><strong>cus_alex</strong></div></div><label for="ticket-body" class="sr-only">Untrusted ticket body</label><textarea id="ticket-body" spellcheck="false" maxlength="12000"></textarea><div class="ticket-footer"><span>The ticket text cannot change the verified sender or customer ID.</span><span id="char-count"></span></div><div class="image-upload"><label for="ticket-images">Sample image attachments</label><input id="ticket-images" type="file" accept="image/png,image/jpeg,image/webp" multiple><p>Upload up to 3 PNG, JPEG, or WebP images (1 MB each). In live mode, selected images are sent to OpenAI for analysis; simulation does not inspect image pixels.</p><div id="image-previews" class="image-previews"></div><label id="image-consent-row" class="image-consent" hidden><input type="checkbox" id="image-consent"> I understand these images will be sent to OpenAI for analysis.</label></div></div>
+      </div>
+      <div class="fault-control"><label><input type="checkbox" id="reviewer-fault"> Simulate reviewer failure</label><span>Make the reviewer approve every draft. Check whether tool permissions still block the attack.</span></div><div class="runbar"><div><strong id="scenario-name">Reply redirection</strong><p id="scenario-description"></p></div><button class="primary" id="run">Run comparison <span>↗</span></button></div>
+      <div class="section-heading"><h2><span class="step-label">02</span> Compare results</h2><button class="text-button" id="download" disabled>↓ Export trace</button></div>
+      <div id="signals" class="signals" hidden></div>
+      <div class="comparison" aria-live="polite">
+        <article class="panel result-panel"><div class="panel-heading"><h3><span class="status-dot red"></span> Workflow only</h3><span class="small-label">BASELINE</span></div><div id="baseline-result" class="result-content empty"><span class="empty-icon">01</span><h4>No review or data checks</h4><p>The supervisor sends the support agent’s draft.<br>Agent tool permissions still apply.</p></div></article>
+        <article class="panel result-panel"><div class="panel-heading"><h3><span class="status-dot orange"></span> With reviewer</h3><span class="small-label">REVIEW</span></div><div id="reviewed-result" class="result-content empty"><span class="empty-icon">02</span><h4>Review before sending</h4><p>The reviewer checks the draft and lookup history.<br>It cannot undo data that was already read.</p></div></article>
+        <article class="panel result-panel"><div class="panel-heading"><h3><span class="status-dot green"></span> Reviewer + firewall gateway</h3><span class="small-label">ENFORCED</span></div><div id="protected-result" class="result-content empty"><span class="empty-icon">03</span><h4>Check each tool call</h4><p>Limit customer access and reply destinations.<br>Block known secrets, including encoded values.</p></div></article>
+      </div>
+      <p class="footnote">Simulation follows a script. These results show how the permissions work, not whether a real model would fall for the attack.</p>
+    </section>
+    <section id="evaluation-view" hidden><div class="section-heading"><h2>Test results</h2><button class="primary" id="evaluate">Run test suite ↗</button></div><p class="section-copy">Run the eight standard cases and any custom tests saved in this browser. Failed runs are listed separately and left out of the success rates.</p><div id="evaluation-results" class="panel evaluation-empty">Run the tests to see results.</div><button class="text-button" id="download-report" disabled>↓ Export evaluation JSON</button></section>
+    <section id="architecture-view" hidden><div class="section-heading"><h2>Agents and permissions</h2></div><div class="architecture">
+      <article class="panel"><span class="step-label">COORDINATOR</span><h3>Supervisor</h3><p>Assigns the support task, asks for a review, then decides whether to send the draft. It cannot look up customers or change tool permissions.</p><code>agentguard/supervisor.py</code></article>
+      <article class="panel"><span class="step-label">SPECIALIST 01</span><h3>Support agent</h3><p>Looks up customer details and writes a draft. Returns the recipient, message, and records it used. It cannot send replies.</p><code>agentguard/agent.py</code></article>
+      <article class="panel"><span class="step-label">SPECIALIST 02</span><h3>Security reviewer</h3><p>Checks the draft and lookup history, then recommends sending or stopping. It has no tools. If support has already read another customer’s data, the reviewer can report it but cannot undo it.</p><code>agentguard/reviewer.py</code></article>
+      <article class="panel"><span class="step-label">SPECIALIST 03 · TEST ONLY</span><h3>Red-team agent</h3><p>Writes attack variations based on the current ticket. It has no access to customer records or tools. Test the variations individually; they are not added to the eight standard tests.</p><code>agentguard/redteam.py</code></article>
+      <article class="panel boundary-card"><span class="step-label">CODE · NOT AN AGENT</span><h3>Firewall gateway</h3><p>Checks tool permissions, limits lookups to the ticket’s customer, removes private fields, and binds replies to the verified sender. Outbound inspection catches known private markers in plain text or common encodings, plus common credential formats. Agent approval cannot bypass these checks.</p><code>agentguard/sandbox.py · defense.py · firewall.py</code></article>
+      <article class="panel"><span class="step-label">CODE · NOT AN AGENT</span><h3>Tests and logs</h3><p>Runs each ticket three ways and records what happened: data read, replies written, actions blocked, and errors. An unauthorized read still counts even if the reviewer stops the reply.</p><code>agentguard/evaluation.py</code></article>
+      </div><div class="scope-note"><strong>How the agents run</strong><p>Live mode uses the same model for each agent, with separate prompts and conversations. Simulation runs local scripts instead. The reviewer-failure switch works only in simulation.</p><p>This demo uses two tools and fake records. Outbound checks cover known markers in plain text, Base64, hex, and URL encoding, along with common credential formats. They can miss rewritten or otherwise transformed secrets and do not provide production authentication.</p></div></section>
+    <footer><span>AGENTGUARD <span class="muted">/ HOSTED SUPPORT-AGENT DEMO</span></span><span>Fake records · no email delivery</span></footer>
+  </div>
+</main>
+</body></html>
